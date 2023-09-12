@@ -1,12 +1,13 @@
 import { Box, List, ListItem, Typography } from "@mui/material";
 
-export default function SecondPath({ info }) {
+export default function FifthPath({ info }) {
   return (
     <>
-      <Typography variant="h2">{info?.title}</Typography>
-      <Typography variant="h4">{info?.text}</Typography>
+      <Typography variant="h2" sx={{ fontFamily: "Quicksand" }}>
+        {info?.title}
+      </Typography>
       <List>
-        {info?.formula?.map((item, index) => {
+        {info?.formula.map((item, index) => {
           return (
             <ListItem key={index}>
               <Box

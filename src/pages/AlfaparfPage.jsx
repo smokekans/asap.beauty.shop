@@ -7,16 +7,12 @@ import GeneralAlfaparf from "../components/Alfaparf/General/GeneralAlfaparf";
 function AlfaparfPage() {
   const [data, setData] = useState(null);
 
-  const getData = () => {
-    const starCountRef = ref(db, "infoPage/alfaparf");
-    onValue(starCountRef, (snapshot) => {
+  useEffect(() => {
+    const infoAlfaparfRef = ref(db, "infoPage/alfaparf");
+    onValue(infoAlfaparfRef, (snapshot) => {
       const data = snapshot.val();
       setData(data);
     });
-  };
-
-  useEffect(() => {
-    getData();
   }, []);
 
   return (

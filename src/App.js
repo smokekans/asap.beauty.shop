@@ -5,12 +5,13 @@ import UserPage from "./pages/UserPage";
 import MainPage from "./pages/MainPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import AuthPage from "./pages/AuthPage";
-import ProductsPage from "./pages/ProductsPage";
-import AlfaparfPage from "./pages/AlfaparfPage";
 import SharedLayout from "./components/SharedLayout/SharedLayout";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import theme from "./theme";
-import LineAlfaparfPage from "./pages/LineAlfaparfProduct";
+import BrandPage from "./pages/BrandPage";
+import LinePage from "./pages/LinePage";
+import ProductPage from "./pages/ProductPage";
+import CatalogPage from "./pages/CatalogPage";
 
 function App() {
   return (
@@ -20,9 +21,13 @@ function App() {
         <Routes>
           <Route path="/" element={<SharedLayout />}>
             <Route index path="" element={<MainPage />} />
-            <Route path="products" element={<ProductsPage />} />
-            <Route path="alfaparf" element={<AlfaparfPage />} />
-            <Route path="/:nameLine" element={<LineAlfaparfPage />} />
+            <Route path="/catalog" element={<CatalogPage />} />
+            <Route path="/:brand" element={<BrandPage />} />
+            <Route path="/:brand/:line" element={<LinePage />} />
+            <Route
+              path="/:brand/:line/:type/:product"
+              element={<ProductPage />}
+            />
             <Route path="" element={<PublicRoute redirectTo="/" restricted />}>
               <Route path="login" element={<AuthPage />} />
             </Route>
