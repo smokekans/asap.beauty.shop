@@ -1,8 +1,6 @@
-import { Box, Button, Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { Box, Typography } from "@mui/material";
 
 export default function MainPage() {
-  const navigate = useNavigate();
   return (
     <>
       <Box>
@@ -27,14 +25,6 @@ export default function MainPage() {
           Швидка доставка ✈️
         </Typography>
       </Box>
-      <Button
-        onClick={() => {
-          navigate("/alfaparf");
-        }}
-        sx={{ width: 1, bgcolor: "black" }}
-      >
-        Alfaparf
-      </Button>
     </>
   );
 }

@@ -89,7 +89,10 @@ export default function Header() {
                           return (
                             <Link
                               key={index}
-                              to={`/${page.name.toLowerCase()}/${line.category.toLowerCase()}`}
+                              to={`/${page.name.toLowerCase()}/${line.category
+                                .toLowerCase()
+                                .replace(/& /g, "")
+                                .replace(/ /g, "-")}`}
                               style={{
                                 textDecoration: "none",
                                 color: "black",

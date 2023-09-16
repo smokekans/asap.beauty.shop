@@ -2,9 +2,6 @@ import { Box, List, ListItem, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
 export default function SixthPath({ info, products }) {
-  console.log("====================================");
-  console.log(info, products);
-  console.log("====================================");
   return (
     <>
       <Typography variant="h3">{info?.title}</Typography>

@@ -22,6 +22,7 @@ export default function AlfaparfLinePage() {
 
       const alfaparfLines =
         catalogData.filter((item) => item.name === "Alfaparf")[0]?.lines || [];
+
       const selectedLine = alfaparfLines.find(
         (line) => line.category.toLowerCase() === nameLine
       );

@@ -28,10 +28,10 @@ export const linesPhLaboratories = [
   { name: "/phlaboratories/argan-keratin" },
   { name: "/phlaboratories/deep-moisture" },
   { name: "/phlaboratories/ice-blonde" },
-  { name: "/phlaboratories/leave-in" },
   { name: "/phlaboratories/pure-repair" },
   { name: "/phlaboratories/pure-straight" },
   { name: "/phlaboratories/smooth-perfect" },
   { name: "/phlaboratories/style-finish" },
   { name: "/phlaboratories/sun-care" },
+  { name: "/phlaboratories/rejuvenating" },
 ];

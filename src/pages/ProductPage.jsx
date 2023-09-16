@@ -9,20 +9,22 @@ export default function ProductPage() {
   const location = useLocation();
 
   useEffect(() => {
-    const productLineAlfaparfRef = ref(db, "catalog");
-    onValue(productLineAlfaparfRef, (snapshot) => {
+    const productLineRef = ref(db, "catalog");
+    onValue(productLineRef, (snapshot) => {
       const catalogData = snapshot.val();
+      console.log(catalogData);
       const nameLine = location.pathname;
       const regex = /\/([^/]+)\/([^/]+)\/([^/]+)\/([^/]+)/;
       const match = nameLine.match(regex);
 
-      const alfaparfLines =
+      const lines =
         catalogData.filter((item) => item.name.toLowerCase() === match[1])[0]
           ?.lines || [];
-      const selectedLine = alfaparfLines.find(
-        (line) => line.category.toLowerCase() === match[2]
+      const selectedLine = lines.find(
+        (line) =>
+          line.category.toLowerCase().replace(/& /g, "").replace(/ /g, "-") ===
+          match[2]
       );
-
       const selectedProduct = selectedLine?.catalog[match[3]].find(
         (product) => {
           return (
@@ -31,7 +33,6 @@ export default function ProductPage() {
           );
         }
       );
-
       setData(selectedProduct);
     });
   }, [location.pathname]);
