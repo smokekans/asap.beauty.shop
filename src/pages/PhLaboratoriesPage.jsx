@@ -8,7 +8,7 @@ export default function PhLaboratoriesPage() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    const infoPhLaboratoriesRef = ref(db, "infoPage/phlaboratories");
+    const infoPhLaboratoriesRef = ref(db, "infoPage/ph-laboratories");
     onValue(infoPhLaboratoriesRef, (snapshot) => {
       const data = snapshot.val();
       setData(data);

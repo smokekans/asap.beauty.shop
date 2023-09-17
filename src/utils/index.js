@@ -7,7 +7,7 @@ export const brands = [
     component: <AlfaparfPage />,
   },
   {
-    name: "/phlaboratories",
+    name: "/ph-laboratories",
     component: <PhLaboratoriesPage />,
   },
 ];
@@ -25,13 +25,13 @@ export const linesAlfaparf = [
 ];
 
 export const linesPhLaboratories = [
-  { name: "/phlaboratories/argan-keratin" },
-  { name: "/phlaboratories/deep-moisture" },
-  { name: "/phlaboratories/ice-blonde" },
-  { name: "/phlaboratories/pure-repair" },
-  { name: "/phlaboratories/pure-straight" },
-  { name: "/phlaboratories/smooth-perfect" },
-  { name: "/phlaboratories/style-finish" },
-  { name: "/phlaboratories/sun-care" },
-  { name: "/phlaboratories/rejuvenating" },
+  { name: "/ph-laboratories/argan-keratin" },
+  { name: "/ph-laboratories/deep-moisture" },
+  { name: "/ph-laboratories/ice-blonde" },
+  { name: "/ph-laboratories/pure-repair" },
+  { name: "/ph-laboratories/pure-straight" },
+  { name: "/ph-laboratories/smooth-perfect" },
+  { name: "/ph-laboratories/style-finish" },
+  { name: "/ph-laboratories/sun-care" },
+  { name: "/ph-laboratories/rejuvenating" },
 ];

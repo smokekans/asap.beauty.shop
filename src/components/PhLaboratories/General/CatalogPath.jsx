@@ -6,13 +6,10 @@ export default function CatalogPath({ info }) {
     <>
       <List>
         {info?.map((line, index) => {
-          console.log("====================================");
-          console.log(line);
-          console.log("====================================");
           return (
             <Link
               key={index}
-              to={`/phlaboratories/${line.name
+              to={`/ph-laboratories/${line.name
                 .toLowerCase()
                 .replace(/& /g, "")
                 .replace(/ /g, "-")}`}

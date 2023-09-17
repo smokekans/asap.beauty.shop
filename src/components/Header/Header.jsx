@@ -5,6 +5,7 @@ import {
   MenuItem,
   MenuList,
   Toolbar,
+  Typography,
 } from "@mui/material";
 import LogoIcon from "./Logo";
 import { Link } from "react-router-dom";
@@ -42,7 +43,13 @@ export default function Header() {
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
+        <AppBar
+          position="fixed"
+          sx={{
+            background: "rgba(255, 255, 255, 0.2)",
+            boxShadow: "none",
+          }}
+        >
           <Toolbar>
             <Box
               component={Link}
@@ -50,6 +57,7 @@ export default function Header() {
               sx={{
                 color: "inherit",
                 textDecoration: "none",
+                flexGrow: 1,
               }}
             >
               <LogoIcon sx={{ width: 56, height: 56 }} />
@@ -66,15 +74,22 @@ export default function Header() {
                   >
                     <Button
                       component={Link}
-                      to={`/${page.name.toLowerCase()}`}
+                      to={`/${page.name.toLowerCase().replace(/ /g, "-")}`}
                       sx={{
                         my: 2,
-                        color: "white",
+                        color: "black",
                         textDecoration: "none",
                         marginRight: "10px",
                       }}
                     >
-                      {page.name}
+                      <Typography
+                        sx={{
+                          textShadow: "1px 1px 1px white",
+                          textTransform: "none",
+                        }}
+                      >
+                        {page.name}
+                      </Typography>
                     </Button>
                     {isCategorySelected(page.name) && (
                       <MenuList
@@ -89,7 +104,9 @@ export default function Header() {
                           return (
                             <Link
                               key={index}
-                              to={`/${page.name.toLowerCase()}/${line.category
+                              to={`/${page.name
+                                .toLowerCase()
+                                .replace(/ /g, "-")}/${line.category
                                 .toLowerCase()
                                 .replace(/& /g, "")
                                 .replace(/ /g, "-")}`}
