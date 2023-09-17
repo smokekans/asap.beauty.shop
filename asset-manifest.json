@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/asap.beauty.shop/static/js/main.a9e0ba3c.js",
+    "main.js": "/asap.beauty.shop/static/js/main.45a99240.js",
     "index.html": "/asap.beauty.shop/index.html",
-    "main.a9e0ba3c.js.map": "/asap.beauty.shop/static/js/main.a9e0ba3c.js.map"
+    "main.45a99240.js.map": "/asap.beauty.shop/static/js/main.45a99240.js.map"
   },
   "entrypoints": [
-    "static/js/main.a9e0ba3c.js"
+    "static/js/main.45a99240.js"
   ]
 }
