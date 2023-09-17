@@ -1,4 +1,3 @@
-import "swiper/swiper-bundle.min.css";
 import { Box, List, ListItem, Typography } from "@mui/material";
 export default function Product({ data }) {
   return (
