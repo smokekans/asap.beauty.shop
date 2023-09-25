@@ -1,0 +1,21 @@
+/* Стилізація пагінації */
+.swiper-pagination-bullet {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Стилізація активного елемента пагінації */
+.swiper-pagination-bullet-active {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Стилізація навігації */
+.swiper-button-prev,
+.swiper-button-next {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+/*Додаткові стилі для навігації */
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 44px;
+}

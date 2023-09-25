@@ -25,7 +25,7 @@ function App() {
             <Route path="/:brand" element={<BrandPage />} />
             <Route path="/:brand/:line" element={<LinePage />} />
             <Route
-              path="/:brand/:line/:type/:product"
+              path="/:brand/:line/:type/:product/:volume"
               element={<ProductPage />}
             />
             <Route path="" element={<PublicRoute redirectTo="/" restricted />}>

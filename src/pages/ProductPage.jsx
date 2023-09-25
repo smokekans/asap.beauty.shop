@@ -6,40 +6,42 @@ import { useLocation } from "react-router-dom";
 
 export default function ProductPage() {
   const [data, setData] = useState({});
+  const [catalogCurrentLine, setCatalogCurrentLine] = useState({});
+
   const location = useLocation();
 
   useEffect(() => {
     const productLineRef = ref(db, "catalog");
     onValue(productLineRef, (snapshot) => {
       const catalogData = snapshot.val();
-      console.log(catalogData);
       const nameLine = location.pathname;
-      const regex = /\/([^/]+)\/([^/]+)\/([^/]+)\/([^/]+)/;
+      const regex = /\/([^/]+)\/([^/]+)\/([^/]+)\/([^/]+)\/([^/]+)/;
       const match = nameLine.match(regex);
 
       const lines =
-        catalogData.filter((item) => item.name.toLowerCase() === match[1])[0]
-          ?.lines || [];
+        catalogData.filter(
+          (item) => item.name.toLowerCase().replace(/ /g, "-") === match[1]
+        )[0]?.lines || {};
       const selectedLine = lines.find(
         (line) =>
           line.category.toLowerCase().replace(/& /g, "").replace(/ /g, "-") ===
           match[2]
       );
+      console.log(selectedLine);
       const selectedProduct = selectedLine?.catalog[match[3]].find(
-        (product) => {
-          return (
-            product.product.toLowerCase().replace(/-/g, " ") ===
-            match[4].replace(/-/g, " ")
-          );
-        }
+        (item) => item.volume.replace(/ /g, "-") === match[5]
       );
       setData(selectedProduct);
+      setCatalogCurrentLine(selectedLine?.catalog);
+      console.log("=================selectedLine.catalog===================");
+      console.log(selectedLine.catalog);
+      console.log("====================================");
     });
   }, [location.pathname]);
 
   return (
     <>
-      <Product data={data} />
+      <Product data={data} catalogCurrentLine={catalogCurrentLine} />
     </>
   );
 }

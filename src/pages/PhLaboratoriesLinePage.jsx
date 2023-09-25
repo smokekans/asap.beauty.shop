@@ -19,21 +19,20 @@ export default function PhLaboratoriesLinePage() {
     onValue(productLineAlfaparfRef, (snapshot) => {
       const catalogData = snapshot.val();
       const nameLine = location.pathname.replace("/ph-laboratories/", "");
+
       const phLaboratoriesLines =
         catalogData.filter((item) => item.name === "pH Laboratories")[0]
           ?.lines || [];
+
       const selectedLine = phLaboratoriesLines.find(
         (line) =>
           line.category.toLowerCase().replace(/& /g, "").replace(/ /g, "-") ===
           nameLine
       );
+
       setProducts(selectedLine?.catalog || []);
     });
   }, [location.pathname]);
 
-  return (
-    <>
-      <GeneralLine infoPage={data} products={products} />
-    </>
-  );
+  return <GeneralLine infoPage={data} products={products} />;
 }

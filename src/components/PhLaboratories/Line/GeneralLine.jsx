@@ -1,22 +1,21 @@
+import HeadPath from "../../Brand/Line/HeadPath";
 import AromaPath from "./AromaPath";
-import CatalogPath from "./CatalogPath";
+import CatalogPath from "../../Brand/Line/CatalogPath";
 import DescriptionPath from "./DescriptionPath";
 import FeaturesPath from "./FeaturesPath";
-import HeadPath from "./HeadPath";
-import HomeMaintenance from "./HomeMaintenance";
+import HomeMaintenancePath from "./HomeMaintenancePath";
 import IngredientsPath from "./IngredientsPath";
 
 export default function GeneralLine({ infoPage, products }) {
-  console.log(products);
   return (
     <>
       <HeadPath data={infoPage?.first} />
       <DescriptionPath data={infoPage?.second} />
       <FeaturesPath data={infoPage?.fifth} />
       <IngredientsPath data={infoPage?.third} />
-      <HomeMaintenance data={infoPage?.sixth} />
+      <HomeMaintenancePath data={infoPage?.sixth} />
       <AromaPath data={infoPage?.fourth} />
-      <CatalogPath products={products} />
+      <CatalogPath id="catalog" products={products} />
     </>
   );
 }

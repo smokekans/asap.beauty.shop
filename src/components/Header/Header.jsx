@@ -84,7 +84,7 @@ export default function Header() {
                     >
                       <Typography
                         sx={{
-                          textShadow: "1px 1px 1px white",
+                          fontFamily: "Comfortaa",
                           textTransform: "none",
                         }}
                       >

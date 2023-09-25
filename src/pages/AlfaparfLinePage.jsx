@@ -5,8 +5,8 @@ import { useLocation } from "react-router-dom";
 import GeneralLine from "../components/Alfaparf/Line/GeneralLine";
 
 export default function AlfaparfLinePage() {
-  const [data, setData] = useState([]);
-  const [products, setProducts] = useState([]);
+  const [data, setData] = useState({});
+  const [products, setProducts] = useState({});
   const location = useLocation();
 
   useEffect(() => {
@@ -21,13 +21,13 @@ export default function AlfaparfLinePage() {
       const nameLine = location.pathname.replace("/alfaparf/", "");
 
       const alfaparfLines =
-        catalogData.filter((item) => item.name === "Alfaparf")[0]?.lines || [];
+        catalogData.filter((item) => item.name === "Alfaparf")[0]?.lines || {};
 
       const selectedLine = alfaparfLines.find(
         (line) => line.category.toLowerCase() === nameLine
       );
 
-      setProducts(selectedLine?.catalog || []);
+      setProducts(selectedLine?.catalog || {});
     });
   }, [location.pathname]);
 
