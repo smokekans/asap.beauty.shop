@@ -1,4 +1,4 @@
-import CatalogPath from "./CatalogPath";
+import CatalogPath from "../../Brand/Line/CatalogPath";
 import DescriptionPath from "./DescriptionPath";
 import HeadPath from "./HeadPath";
 export default function GeneralPhLaboratories({ infoPage }) {

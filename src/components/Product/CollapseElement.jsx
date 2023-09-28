@@ -14,7 +14,7 @@ export default function CollapseElement({ content, name }) {
     <Box sx={{ display: "block" }}>
       <Button
         onClick={handleClick}
-        sx={{ fontFamily: "Comfortaa", fontSize: 45 }}
+        sx={{ fontFamily: "Comfortaa", fontSize: 35 }}
       >
         {name}
         {open ? (

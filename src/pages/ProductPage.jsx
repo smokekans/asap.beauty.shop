@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Product from "../components/Product/Product";
+import GeneralProduct from "../components/Product/GeneralProduct";
 import { onValue, ref } from "firebase/database";
 import { db } from "../firebase/config";
 import { useLocation } from "react-router-dom";
@@ -7,6 +7,8 @@ import { useLocation } from "react-router-dom";
 export default function ProductPage() {
   const [data, setData] = useState({});
   const [catalogCurrentLine, setCatalogCurrentLine] = useState({});
+  const [catalogCurrentType, setCatalogCurrentType] = useState({});
+  const [currentPosition, setCurrentPosition] = useState("");
 
   const location = useLocation();
 
@@ -17,6 +19,7 @@ export default function ProductPage() {
       const nameLine = location.pathname;
       const regex = /\/([^/]+)\/([^/]+)\/([^/]+)\/([^/]+)\/([^/]+)/;
       const match = nameLine.match(regex);
+      setCurrentPosition(match);
 
       const lines =
         catalogData.filter(
@@ -27,21 +30,26 @@ export default function ProductPage() {
           line.category.toLowerCase().replace(/& /g, "").replace(/ /g, "-") ===
           match[2]
       );
-      console.log(selectedLine);
+
       const selectedProduct = selectedLine?.catalog[match[3]].find(
-        (item) => item.volume.replace(/ /g, "-") === match[5]
+        (item) =>
+          item.volume.replace(/ /g, "-") === match[5] &&
+          item.product.toLowerCase().replace(/& /g, "").replace(/ /g, "-") ===
+            match[4]
       );
+
       setData(selectedProduct);
+      setCatalogCurrentType(selectedLine?.catalog[match[3]]);
       setCatalogCurrentLine(selectedLine?.catalog);
-      console.log("=================selectedLine.catalog===================");
-      console.log(selectedLine.catalog);
-      console.log("====================================");
     });
   }, [location.pathname]);
 
   return (
-    <>
-      <Product data={data} catalogCurrentLine={catalogCurrentLine} />
-    </>
+    <GeneralProduct
+      data={data}
+      catalogCurrentLine={catalogCurrentLine}
+      catalogCurrentType={catalogCurrentType}
+      currentPosition={currentPosition}
+    />
   );
 }

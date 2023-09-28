@@ -24,18 +24,3 @@ export default function FeaturesPath({ data, name }) {
     />
   );
 }
-
-//  {
-//  data?.features?.map((item, index) => {
-//    return (
-//      <ListItem
-//        key={index}
-//        sx={{
-//          fontFamily: "Comfortaa",
-//        }}
-//      >
-//        {item}
-//      </ListItem>
-//    );
-//  });
-//  }

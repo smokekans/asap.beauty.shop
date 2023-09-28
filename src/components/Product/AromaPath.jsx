@@ -14,7 +14,6 @@ export default function AromaPath({ data, name }) {
                   sx={{
                     fontFamily: "Comfortaa",
                     textAlign: "center ",
-                    "&:nth-child(2n+2)": { mb: 2 },
                   }}
                   key={index}
                 >
