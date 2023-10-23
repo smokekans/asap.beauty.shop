@@ -23,7 +23,7 @@ export default function HeadPath({ data }) {
       <Box
         sx={{
           maxWidth: "50%",
-          px: 2,
+          px: "calc(0.5/12*100vw)",
         }}
       >
         <Typography

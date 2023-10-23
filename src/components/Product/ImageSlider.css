@@ -12,10 +12,12 @@
 .swiper-button-prev,
 .swiper-button-next {
   color: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
 }
 
 /*Додаткові стилі для навігації */
 .swiper-button-prev::after,
 .swiper-button-next::after {
   font-size: 44px;
+  cursor: pointer;
 }

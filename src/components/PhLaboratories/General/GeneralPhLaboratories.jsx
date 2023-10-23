@@ -1,12 +1,13 @@
-import CatalogPath from "../../Brand/Line/CatalogPath";
-import DescriptionPath from "./DescriptionPath";
+import CatalogLinePath from "./CatalogLinePath";
 import HeadPath from "./HeadPath";
+import DescriptionPath from "./DescriptionPath";
+
 export default function GeneralPhLaboratories({ infoPage }) {
   return (
     <>
-      <HeadPath info={infoPage?.first} />
-      <DescriptionPath info={infoPage?.second} />
-      <CatalogPath info={infoPage?.catalog} />
+      <HeadPath data={infoPage?.first} />
+      <DescriptionPath data={infoPage?.second} />
+      <CatalogLinePath id="catalog" products={infoPage?.catalog} />
     </>
   );
 }

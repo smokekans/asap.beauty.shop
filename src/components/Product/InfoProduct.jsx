@@ -160,14 +160,6 @@ export default function InfoProduct({ data, otherVolume, currentPosition }) {
         >
           {data?.description}
         </Typography>
-        <Typography
-          sx={{
-            fontFamily: "Comfortaa",
-            mt: "36px",
-          }}
-        >
-          {data?.results}
-        </Typography>
       </Box>
     </Box>
   );

@@ -16,6 +16,7 @@ import { useEffect, useState } from "react";
 import { onValue, ref } from "firebase/database";
 import { db } from "../../firebase/config";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 
 export default function Header() {
@@ -69,7 +70,7 @@ export default function Header() {
           <AppBar
             position="fixed"
             sx={{
-              background: "rgba(255, 255, 255, 0.2)",
+              background: "rgba(255, 255, 255, 0.4)",
               boxShadow: "none",
             }}
           >
@@ -147,6 +148,11 @@ export default function Header() {
                   );
                 })}
               </Box>
+              <Box>
+                <Button variant="outlined">
+                  <ShoppingCartOutlinedIcon />
+                </Button>
+              </Box>
             </Toolbar>
           </AppBar>
         </Slide>
@@ -155,7 +161,7 @@ export default function Header() {
           <Box
             onClick={handleClick}
             role="presentation"
-            sx={{ position: "fixed", bottom: 16, right: 16 }}
+            sx={{ position: "fixed", bottom: 20, right: 20, zIndex: 100 }}
           >
             <Fab size="small" aria-label="scroll back to">
               <KeyboardArrowUpIcon />

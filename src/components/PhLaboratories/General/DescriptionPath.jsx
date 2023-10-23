@@ -1,18 +1,39 @@
 import { Box, Typography } from "@mui/material";
 
-export default function DescriptionPath({ info }) {
+export default function DescriptionPath({ data }) {
   return (
-    <>
-      <Box
-        component="img"
+    <Box
+      sx={{
+        backgroundImage: `url(${data?.image})`,
+        backgroundSize: "contain",
+        backgroundPosition: "top right",
+        height: "600px",
+        backgroundRepeat: "no-repeat",
+        width: 1,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        px: "calc(0.5/12*100vw)",
+        pt: "calc(0.5/12*100vw)",
+      }}
+    >
+      <Typography
+        variant="h4"
         sx={{
-          width: 350,
+          fontFamily: "Comfortaa",
         }}
-        alt={info?.title}
-        src={info?.image}
-      />
-      <Typography variant="h4">{info?.title}</Typography>
-      <Typography variant="body2">{info?.text}</Typography>
-    </>
+      >
+        {data?.title}
+      </Typography>
+      <Typography
+        variant="body2"
+        sx={{
+          fontFamily: "Comfortaa",
+          width: "60vw",
+        }}
+      >
+        {data?.text}
+      </Typography>
+    </Box>
   );
 }

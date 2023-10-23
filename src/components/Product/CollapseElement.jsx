@@ -14,13 +14,14 @@ export default function CollapseElement({ content, name }) {
     <Box sx={{ display: "block" }}>
       <Button
         onClick={handleClick}
-        sx={{ fontFamily: "Comfortaa", fontSize: 35 }}
+        fullWidth
+        sx={{ fontFamily: "Comfortaa", fontSize: 20 }}
       >
         {name}
         {open ? (
-          <ExpandLess sx={{ fontSize: 40 }} />
+          <ExpandLess sx={{ fontSize: 30, ml: "auto" }} />
         ) : (
-          <ExpandMore sx={{ fontSize: 40 }} />
+          <ExpandMore sx={{ fontSize: 30, ml: "auto" }} />
         )}
       </Button>
       <Collapse in={open}>{content}</Collapse>

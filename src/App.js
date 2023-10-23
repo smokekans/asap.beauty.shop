@@ -21,6 +21,7 @@ function App() {
         <Routes>
           <Route path="/" element={<SharedLayout />}>
             <Route index path="" element={<MainPage />} />
+            <Route path="/basket" element={<CatalogPage />} />
             <Route path="/catalog" element={<CatalogPage />} />
             <Route path="/:brand" element={<BrandPage />} />
             <Route path="/:brand/:line" element={<LinePage />} />

@@ -11,7 +11,15 @@ import "./ImageSlider.css";
 
 export default function ImageSlider({ data }) {
   return (
-    <Box sx={{ maxWidth: 500, height: "100hv", flexGrow: 1, color: "white" }}>
+    <Box
+      sx={{
+        maxWidth: 500,
+        height: "100hv",
+        flexGrow: 1,
+        color: "white",
+        mr: 3,
+      }}
+    >
       <Swiper
         zoom={true}
         navigation={true}

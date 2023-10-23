@@ -1,10 +1,8 @@
-import { Box, Tabs, Typography, tabsClasses } from "@mui/material";
+import { Box, Tab, Tabs, Typography, tabsClasses } from "@mui/material";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function CatalogPath({ id, products }) {
-  const [value, setValue] = useState(0);
-
   const allProducts = Object.keys(products || {}).reduce((acc, category) => {
     return acc.concat(products[category]);
   }, []);
@@ -15,9 +13,10 @@ export default function CatalogPath({ id, products }) {
       behavior: "smooth",
     });
   };
+  const [activeTab, setActiveTab] = useState(0);
 
-  const handleChange = (newValue) => {
-    setValue(newValue);
+  const handleChange = (event, newValue) => {
+    setActiveTab(newValue);
   };
 
   return (
@@ -27,10 +26,11 @@ export default function CatalogPath({ id, products }) {
         display: "flex",
         flexWrap: "wrap",
         maxWidth: "100vw",
+        justifyContent: "center",
       }}
     >
       <Tabs
-        value={value}
+        value={activeTab}
         onChange={handleChange}
         variant="scrollable"
         scrollButtons="auto"
@@ -45,60 +45,65 @@ export default function CatalogPath({ id, products }) {
       >
         {allProducts.map((product, index) => {
           return (
-            <Box
-              sx={{
-                wordWrap: "break-word",
-                whiteSpace: "normal",
-                width: "250px",
-                mx: 1,
-              }}
-            >
-              <Link
-                key={index}
-                to={`/${product.brand
-                  .toLowerCase()
-                  .replace(/ /g, "-")}/${product.subline
-                  .toLowerCase()
-                  .replace(/ /g, "-")}/${product.type}/${product.product
-                  .toLowerCase()
-                  .replace(/& /g, "")
-                  .replace(/ /g, "-")}/${product.volume
-                  .toLowerCase()
-                  .replace(/ /g, "-")}`}
-                style={{
-                  textDecoration: "none",
-                  color: "black",
-                  width: "250px",
-                  textAlign: "center",
-                }}
-              >
-                <Box
-                  component="img"
-                  sx={{ width: "250px" }}
-                  alt={product?.title}
-                  src={product?.image[0]}
-                  onClick={scrollToTop}
-                />
-                <Typography
-                  variant="h6"
-                  sx={{
+            <Tab
+              key={index}
+              sx={{ textDecoration: "none", cursor: "pointer", color: "black" }}
+              label={
+                <Link
+                  to={`/${product.brand
+                    .toLowerCase()
+                    .replace(/ /g, "-")}/${product.subline
+                    .toLowerCase()
+                    .replace(/ /g, "-")}/${product.type}/${product.product
+                    .toLowerCase()
+                    .replace(/& /g, "")
+                    .replace(/ /g, "-")}/${product.volume
+                    .toLowerCase()
+                    .replace(/ /g, "-")}`}
+                  style={{
+                    textDecoration: "none",
+                    textTransform: "none",
+                    color: "black",
                     wordWrap: "break-word",
+                    width: "250px",
+                    height: "100%",
                     fontFamily: "Comfortaa",
                   }}
                 >
-                  {product?.product} {product?.volume}
-                </Typography>
-                <Typography
-                  variant="body2"
-                  sx={{
-                    wordWrap: "break-word",
-                    fontFamily: "Comfortaa",
-                  }}
-                >
-                  {product?.name}
-                </Typography>
-              </Link>
-            </Box>
+                  <Box
+                    component="img"
+                    sx={{ width: "250px" }}
+                    alt={product?.title}
+                    src={product?.image[0]}
+                    onClick={scrollToTop}
+                  />
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      fontFamily: "Comfortaa",
+                    }}
+                  >
+                    {product?.product}
+                  </Typography>
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      fontFamily: "Comfortaa",
+                    }}
+                  >
+                    {product?.volume}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      fontFamily: "Comfortaa",
+                    }}
+                  >
+                    {product?.name}
+                  </Typography>
+                </Link>
+              }
+            />
           );
         })}
       </Tabs>
