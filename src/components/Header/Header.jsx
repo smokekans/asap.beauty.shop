@@ -17,6 +17,7 @@ import { onValue, ref } from "firebase/database";
 import { db } from "../../firebase/config";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 
 export default function Header() {
@@ -149,6 +150,9 @@ export default function Header() {
                 })}
               </Box>
               <Box>
+                <Button component={Link} to={"/user"}>
+                  <AccountCircleOutlinedIcon />
+                </Button>
                 <Button variant="outlined">
                   <ShoppingCartOutlinedIcon />
                 </Button>
