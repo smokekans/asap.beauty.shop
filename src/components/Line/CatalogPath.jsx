@@ -37,6 +37,7 @@ export default function CatalogPath({ id, products }) {
         allowScrollButtonsMobile
         aria-label="scrollable auto tabs example"
         sx={{
+          mt: 2,
           display: "flex",
           [`& .${tabsClasses.scrollButtons}`]: {
             "&.Mui-disabled": { opacity: 0.3 },
@@ -47,7 +48,15 @@ export default function CatalogPath({ id, products }) {
           return (
             <Tab
               key={index}
-              sx={{ textDecoration: "none", cursor: "pointer", color: "black" }}
+              sx={{
+                transition: "background-color 0.7s ease",
+                textDecoration: "none",
+                cursor: "pointer",
+                color: "black",
+                borderRadius: 25,
+                m: 1,
+                "&:hover": { bgcolor: "rgba(0, 0, 0, 0.04)", borderRadius: 25 },
+              }}
               label={
                 <Link
                   to={`/${product.brand
@@ -77,26 +86,29 @@ export default function CatalogPath({ id, products }) {
                     src={product?.image[0]}
                     onClick={scrollToTop}
                   />
-                  <Typography
-                    variant="h6"
-                    sx={{
-                      fontFamily: "Comfortaa",
-                    }}
-                  >
-                    {product?.product}
-                  </Typography>
-                  <Typography
-                    variant="h6"
-                    sx={{
-                      fontFamily: "Comfortaa",
-                    }}
-                  >
-                    {product?.volume}
-                  </Typography>
+                  <Box sx={{ height: "96px" }}>
+                    <Typography
+                      variant="h6"
+                      sx={{
+                        fontFamily: "Comfortaa",
+                      }}
+                    >
+                      {product?.product}
+                    </Typography>
+                    <Typography
+                      variant="h6"
+                      sx={{
+                        fontFamily: "Comfortaa",
+                      }}
+                    >
+                      {product?.volume}
+                    </Typography>
+                  </Box>
                   <Typography
                     variant="body2"
                     sx={{
                       fontFamily: "Comfortaa",
+                      maxWidth: "250px",
                     }}
                   >
                     {product?.name}

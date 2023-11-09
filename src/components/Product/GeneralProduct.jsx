@@ -3,10 +3,10 @@ import ImageSlider from "./ImageSlider";
 import FeaturesPath from "./FeaturesPath";
 import DescriptionPath from "./DescriptionPath";
 import AromaPath from "./AromaPath";
-import CatalogPath from "../Brand/Line/CatalogPath";
 import InfoProduct from "./InfoProduct";
 import FormulaPath from "./FormulaPath";
 import ProductDescriptionText from "./ProductDescriptionText";
+import CatalogPath from "../Line/CatalogPath";
 
 export default function GeneralProduct({
   data,
@@ -46,7 +46,7 @@ export default function GeneralProduct({
           <FeaturesPath data={data?.features} name="Особливості" />
           <DescriptionPath data={data?.ingredients} name="Інградієнти" />
           <DescriptionPath data={data?.howtouse} name="Спосіб застосування" />
-          <AromaPath data={data?.aroma} name="Аромат" sx={{ mx: "auto" }} />
+          <AromaPath data={data?.aroma} name="Аромат" />
         </Box>
       </Box>
       {data?.formula && <FormulaPath data={data} />}

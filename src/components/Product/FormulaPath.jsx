@@ -9,6 +9,17 @@ export default function FormulaPath({ data }) {
   };
   return (
     <Box sx={{ mt: 6 }}>
+      <Typography
+        variant="h4"
+        sx={{
+          fontFamily: "Comfortaa",
+          fontSize: 24,
+          textTransform: "uppercase",
+          textAlign: "center",
+        }}
+      >
+        Активні інгредієнти лінії:
+      </Typography>
       <Tabs
         value={activeTab}
         onChange={handleChange}
@@ -27,7 +38,7 @@ export default function FormulaPath({ data }) {
                 width: "500px",
                 wordWrap: "break-word",
                 whiteSpace: "normal",
-                mx: 2,
+                m: 2,
               }}
               label={
                 <Box

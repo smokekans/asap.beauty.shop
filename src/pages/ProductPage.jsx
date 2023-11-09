@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import GeneralProduct from "../components/Product/GeneralProduct";
 import { onValue, ref } from "firebase/database";
-import { db } from "../firebase/config";
+import { database } from "../firebase/config";
 import { useLocation } from "react-router-dom";
 
 export default function ProductPage() {
@@ -13,7 +13,7 @@ export default function ProductPage() {
   const location = useLocation();
 
   useEffect(() => {
-    const productLineRef = ref(db, "catalog");
+    const productLineRef = ref(database, "catalog");
     onValue(productLineRef, (snapshot) => {
       const catalogData = snapshot.val();
       const nameLine = location.pathname;

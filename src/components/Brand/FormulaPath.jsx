@@ -1,6 +1,6 @@
 import { Box, Tab, Tabs, Typography } from "@mui/material";
 
-export default function SecondPath({ info }) {
+export default function FormulaPath({ data }) {
   return (
     <Box
       sx={{
@@ -14,7 +14,7 @@ export default function SecondPath({ info }) {
             fontFamily: "Comfortaa",
           }}
         >
-          {info?.title}
+          {data?.title}
         </Typography>
         <Typography
           variant="h4"
@@ -22,7 +22,7 @@ export default function SecondPath({ info }) {
             fontFamily: "Comfortaa",
           }}
         >
-          {info?.text}
+          {data?.text}
         </Typography>
       </Box>
       <Tabs
@@ -32,12 +32,12 @@ export default function SecondPath({ info }) {
           p: "calc(0.5/12*100vw)",
         }}
       >
-        {info?.formula?.map((item, index) => {
+        {data?.formula?.map((item, index) => {
           return (
             <Tab
               key={index}
               sx={{
-                border: "2px solid rgba(0, 0, 0, 0.2)",
+                border: "1px solid rgba(0, 0, 0, 0.2)",
                 height: "250px",
                 wordWrap: "break-word",
                 whiteSpace: "normal",
@@ -55,15 +55,16 @@ export default function SecondPath({ info }) {
                     src={item.icon}
                   />
                   <Typography
-                    variant="h4"
+                    variant="h3"
                     sx={{
                       fontFamily: "Comfortaa",
+                      fontSize: 22,
                     }}
                   >
                     {item.title}
                   </Typography>
                   <Typography
-                    variant="h6"
+                    variant="h4"
                     sx={{
                       fontFamily: "Comfortaa",
                       textTransform: "none",

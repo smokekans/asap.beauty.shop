@@ -1,11 +1,8 @@
-import { useSelector } from "react-redux";
-import { getAccessToken } from "../redux/auth/authSelectors";
+import Cookies from "js-cookie";
 import { Outlet, Navigate } from "react-router-dom";
 
-export const PublicRoute = ({ restricted = false, redirectTo = "/" }) => {
-  const accessToken = useSelector(getAccessToken);
-
-  const shouldRedirect = accessToken && restricted;
-
+export const PublicRoute = ({ restricted = false, redirectTo }) => {
+  const token = Cookies.get("accessToken");
+  const shouldRedirect = token && restricted;
   return shouldRedirect ? <Navigate to={redirectTo} /> : <Outlet />;
 };

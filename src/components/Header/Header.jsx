@@ -1,9 +1,11 @@
 import {
   AppBar,
+  Badge,
   Box,
   Button,
   Fab,
   Fade,
+  IconButton,
   MenuItem,
   MenuList,
   Slide,
@@ -14,18 +16,19 @@ import LogoIcon from "./Logo";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { onValue, ref } from "firebase/database";
-import { db } from "../../firebase/config";
+import { database } from "../../firebase/config";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
+import SignOut from "../Auth/SignOut";
 
 export default function Header() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [pages, setPages] = useState([]);
 
   const getData = () => {
-    const catalogRef = ref(db, "/catalog");
+    const catalogRef = ref(database, "/catalog");
     onValue(catalogRef, (snapshot) => {
       const data = snapshot.val();
       setPages(data);
@@ -66,13 +69,16 @@ export default function Header() {
 
   return (
     <>
-      <Box sx={{ flexGrow: 1 }}>
+      <Box>
         <Slide appear={false} direction="down" in={!trigger}>
           <AppBar
             position="fixed"
             sx={{
-              background: "rgba(255, 255, 255, 0.4)",
+              background: "rgba(255, 255, 255, 1)",
               boxShadow: "none",
+              m: 1,
+              borderRadius: 100,
+              width: "-webkit-fill-available",
             }}
           >
             <Toolbar>
@@ -119,9 +125,10 @@ export default function Header() {
                         <MenuList
                           sx={{
                             position: "absolute",
-                            backgroundColor: "white",
                             boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.2)",
                             p: 1,
+                            bgcolor: "white",
+                            borderRadius: 5,
                           }}
                         >
                           {page.lines?.map((line, index) => {
@@ -150,12 +157,15 @@ export default function Header() {
                 })}
               </Box>
               <Box>
-                <Button component={Link} to={"/user"}>
+                <IconButton component={Link} to={"/user"}>
                   <AccountCircleOutlinedIcon />
-                </Button>
-                <Button variant="outlined">
-                  <ShoppingCartOutlinedIcon />
-                </Button>
+                </IconButton>
+                <IconButton aria-label="cart">
+                  <Badge badgeContent={4} color="secondary">
+                    <ShoppingCartOutlinedIcon />
+                  </Badge>
+                </IconButton>
+                <SignOut />
               </Box>
             </Toolbar>
           </AppBar>

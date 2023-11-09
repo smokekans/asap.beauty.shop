@@ -10,10 +10,7 @@ export default function Footer() {
         px: 2,
         mt: "auto",
         textAlign: "center",
-        backgroundColor: (theme) =>
-          theme.palette.mode === "light"
-            ? theme.palette.grey[200]
-            : theme.palette.grey[800],
+        bgcolor: "rgba(255, 255, 255, 0.4)",
       }}
     >
       <Container>

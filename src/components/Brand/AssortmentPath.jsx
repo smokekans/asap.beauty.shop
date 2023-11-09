@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 
-export default function ThirdPath({ data }) {
+export default function AssortmentPath({ data }) {
   return (
     <Box
       sx={{

@@ -1,14 +1,25 @@
 import { Box, Tab, Tabs, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
-export default function CatalogAlfaparf({ info }) {
+export default function CatalogAlfaparfLinePath({ id, products, nameBrand }) {
   return (
-    <Box sx={{ display: "grid" }}>
-      {info?.map((item, index) => {
+    <Box
+      id={id}
+      sx={{
+        display: "grid",
+        pt: 6,
+        bgcolor: "white",
+      }}
+    >
+      {products?.map((item, index) => {
         return (
           <Box
             key={index}
-            sx={{ mx: "auto", width: "100vw", textAlign: "center", my: 3 }}
+            sx={{
+              mx: "auto",
+              width: "100vw",
+              textAlign: "center",
+            }}
           >
             <Box
               sx={{
@@ -20,9 +31,9 @@ export default function CatalogAlfaparf({ info }) {
                 variant="h3"
                 sx={{
                   fontFamily: "Comfortaa",
-                  fontSize: 20,
+                  fontSize: 28,
                   color: "black",
-                  mt: 5,
+                  mt: 3,
                 }}
               >
                 {item.title}
@@ -39,31 +50,27 @@ export default function CatalogAlfaparf({ info }) {
               </Typography>
             </Box>
             <Tabs variant="fullWidth">
-              {item.lines.map((line, index) => {
+              {item?.catalog?.map((line, index) => {
                 return (
                   <Tab
                     key={index}
                     label={
                       <Link
                         key={index}
-                        to={`/alfaparf/${line.title.toLowerCase()}`}
+                        to={`/${nameBrand}/${line.title.toLowerCase()}`}
                         style={{
                           textDecoration: "none",
                           color: "black",
-                          height: "550px",
                         }}
                       >
-                        <Box
-                          sx={{
-                            width: "400px",
-                            height: "300px",
-                          }}
-                        >
+                        <Box>
                           <Box
                             component="img"
                             sx={{
-                              width: "auto",
+                              width: "400px",
                               height: "400px",
+                              objectFit: "cover",
+                              objectPosition: "top",
                             }}
                             alt={line.title}
                             src={line.image}

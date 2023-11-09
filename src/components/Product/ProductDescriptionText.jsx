@@ -19,7 +19,7 @@ export default function ProductDescriptionText({ product, result }) {
           fontFamily: "Comfortaa",
         }}
       >
-        {result}{" "}
+        {result}
       </Typography>
     </Box>
   );

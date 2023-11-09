@@ -29,8 +29,11 @@ function App() {
               path="/:brand/:line/:type/:product/:volume"
               element={<ProductPage />}
             />
-            <Route path="" element={<PublicRoute redirectTo="/" restricted />}>
-              <Route path="login" element={<AuthPage />} />
+            <Route
+              path=""
+              element={<PublicRoute redirectTo="/user" restricted />}
+            >
+              <Route path="authorization" element={<AuthPage />} />
             </Route>
             <Route path="" element={<PrivateRoute />}>
               <Route path="user" element={<UserPage />} />

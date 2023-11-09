@@ -1,8 +1,7 @@
-import { useSelector } from "react-redux";
-import { getAccessToken } from "../redux/auth/authSelectors";
+import Cookies from "js-cookie";
 import { Outlet, Navigate } from "react-router-dom";
 
 export const PrivateRoute = () => {
-  const accessToken = useSelector(getAccessToken);
-  return accessToken ? <Outlet /> : <Navigate to="/login" />;
+  const token = Cookies.get("accessToken");
+  return token ? <Outlet /> : <Navigate to="/authorization" />;
 };

@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { List, ListItem } from "@mui/material";
 import CollapseElement from "./CollapseElement";
 
 export default function AromaPath({ data, name }) {
@@ -7,21 +7,20 @@ export default function AromaPath({ data, name }) {
       <CollapseElement
         name={name}
         content={
-          <Box>
+          <List>
             {data?.map((item, index) => {
               return (
-                <Typography
+                <ListItem
+                  key={index}
                   sx={{
                     fontFamily: "Comfortaa",
-                    textAlign: "center ",
                   }}
-                  key={index}
                 >
                   {item}
-                </Typography>
+                </ListItem>
               );
             })}
-          </Box>
+          </List>
         }
       />
     </>

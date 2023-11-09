@@ -4,21 +4,34 @@ import {
   TextField,
   FormControlLabel,
   Checkbox,
-  Link,
   Grid,
   Box,
   Typography,
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import { auth } from "../../firebase/config";
+import Cookies from "js-cookie";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
-export default function SignIn() {
+export default function SignIn({ changeCheck }) {
+  const navigate = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+
+    signInWithEmailAndPassword(auth, data.get("email"), data.get("password"))
+      .then((userCredential) => {
+        const user = userCredential.user;
+        Cookies.set("id", user.uid, { expires: 7 });
+        Cookies.set("accessToken", user.accessToken, { expires: 7 });
+        navigate("/user");
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error.code, error.message);
+      });
   };
 
   return (
@@ -71,14 +84,22 @@ export default function SignIn() {
         </Button>
         <Grid container>
           <Grid item xs>
-            <Link href="#" variant="body2">
+            <Button
+              variant="outline"
+              onClick={changeCheck}
+              sx={{ textTransform: "none" }}
+            >
               Забули пароль?
-            </Link>
+            </Button>
           </Grid>
           <Grid item>
-            <Link href="#" variant="body2">
+            <Button
+              variant="outline"
+              onClick={changeCheck}
+              sx={{ textTransform: "none" }}
+            >
               Немає облікового запису? Зареєструватися
-            </Link>
+            </Button>
           </Grid>
         </Grid>
       </Box>

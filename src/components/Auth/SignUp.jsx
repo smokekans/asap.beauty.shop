@@ -4,21 +4,50 @@ import {
   TextField,
   FormControlLabel,
   Checkbox,
-  Link,
   Grid,
   Box,
   Typography,
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth, db } from "../../firebase/config";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
+import { doc, setDoc } from "firebase/firestore";
 
-export default function SignUp() {
+export default function SignUp({ changeCheck }) {
+  const navigate = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+    createUserWithEmailAndPassword(
+      auth,
+      data.get("email"),
+      data.get("password"),
+      data.get("firstName"),
+      data.get("lastName")
+    )
+      .then((userCredential) => {
+        const user = userCredential.user;
+        updateProfile(auth.currentUser, {
+          displayName: `${data.get("firstName")} ${data.get("lastName")}`,
+        });
+        setDoc(doc(db, "users", user.uid), {
+          displayName: user.displayName,
+          email: user.email,
+          uid: user.uid,
+          phoneNumber: user.phoneNumber,
+        });
+        Cookies.set("id", user.uid, { expires: 7 });
+        Cookies.set("accessToken", user.accessToken, { expires: 7 });
+        console.log(Cookies.get("id"));
+        console.log(user);
+        navigate("/user");
+      })
+      .catch((error) => {
+        console.log(error.code, error.message);
+      });
   };
 
   return (
@@ -63,6 +92,16 @@ export default function SignUp() {
             <TextField
               required
               fullWidth
+              id="phoneNumber"
+              label="Номер телефону"
+              name="phoneNumber"
+              autoComplete="p"
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              required
+              fullWidth
               id="email"
               label="Електронна адреса"
               name="email"
@@ -97,9 +136,13 @@ export default function SignUp() {
         </Button>
         <Grid container justifyContent="flex-end">
           <Grid item>
-            <Link href="#" variant="body2">
+            <Button
+              variant="outline"
+              onClick={changeCheck}
+              sx={{ textTransform: "none" }}
+            >
               Вже маєте обліковий запис? Увійти
-            </Link>
+            </Button>
           </Grid>
         </Grid>
       </Box>

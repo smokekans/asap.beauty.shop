@@ -1,14 +1,10 @@
 import { Box, List, ListItem, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
-export default function CatalogLinePath({ id, products }) {
+export default function CatalogLinePath({ id, products, nameBrand }) {
   const allProducts = Object.keys(products || {}).reduce((acc, category) => {
     return acc.concat(products[category]);
   }, []);
-
-  console.log("==============allProducts======================");
-  console.log(allProducts);
-  console.log("====================================");
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -51,8 +47,9 @@ export default function CatalogLinePath({ id, products }) {
               }}
             >
               <Link
-                to={`/ph-laboratories/${product.name
+                to={`/${nameBrand}/${product.name
                   .toLowerCase()
+                  .replace(/& /g, "")
                   .replace(/ /g, "-")}`}
                 style={{
                   textDecoration: "none",
